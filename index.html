@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACS Καρπενησίου - ΑΙΚΑΤΕΡΙΝΗ ΚΑΪΠΑΝΟΥ ΤΑΧΥΜΕΤΑΦΟΡΕΣ Ι.Κ.Ε.</title>
+    <style>
+        :root {
+            --acs-red: #E30613;
+            --acs-red-hover: #B8040F;
+            --acs-yellow: #FFCC00;
+            --bg-main: #FFFFFF;
+            --custom-light-gray: #F0F0F0;
+            --custom-card-bg: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #555555;
+            --border-color: #D6D6D6;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .top-bar {
+            background-color: var(--custom-light-gray);
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.82rem;
+            padding: 8px 1rem;
+        }
+
+        .top-bar-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar a {
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .top-bar a:hover {
+            color: var(--acs-red);
+        }
+
+        header {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 12px 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            margin-left: 12px;
+            border-left: 2px solid var(--border-color);
+            padding-left: 12px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        nav a, nav button {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 4px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover, nav button:hover {
+            background-color: var(--custom-light-gray);
+            color: var(--acs-red);
+        }
+
+        .hero-banner {
+            background-color: var(--custom-light-gray);
+            color: var(--text-main);
+            padding: 3.5rem 1rem;
+            border-bottom: 5px solid var(--acs-red);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-banner h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .hero-banner p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+        }
+
+        .btn-track-action {
+            background-color: var(--acs-red);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 4px 14px rgba(227, 6, 19, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-track-action:hover {
+            background-color: var(--acs-red-hover);
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            max-width: 1140px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-card {
+            background: var(--custom-card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .section-title {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid var(--acs-yellow);
+            display: inline-block;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .info-card {
+            background: var(--custom-light-gray);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--text-main);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .info-card.red-top {
+            border-top-color: var(--acs-red);
+        }
+
+        .info-card label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .info-card p, .info-card a {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .info-card a:hover {
+            color: var(--acs-red);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--custom-light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            border-color: var(--acs-red);
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .map-box {
+            width: 100%;
+            height: 380px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 1rem;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .btn-map-link {
+            display: inline-block;
+            margin-top: 12px;
+            background-color: var(--text-main);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .btn-map-link:hover {
+            background-color: var(--acs-red);
+        }
+
+        footer {
+            background-color: var(--custom-light-gray);
+            color: var(--text-main);
+            padding: 3rem 1rem 1.5rem 1rem;
+            border-top: 4px solid var(--acs-red);
+            font-size: 0.88rem;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-col p {
+            line-height: 1.6;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: var(--acs-red);
+        }
+
+        .footer-bottom {
+            max-width: 1140px;
+            margin: 1.5rem auto 0 auto;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(2px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 650px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            border-top: 6px solid var(--acs-red);
+            animation: fadeIn 0.2s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #A0AEC0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--acs-red);
+        }
+
+        .file-list {
+            list-style: none;
+            margin-top: 1.2rem;
+        }
+
+        .file-list li {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--custom-light-gray);
+            margin-bottom: 8px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .file-list a {
+            background-color: var(--text-main);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .file-list a:hover {
+            background-color: var(--acs-red);
+        }
+
+        /* Floating Call Button - Για κινητά */
+        .mobile-call-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--acs-red);
+            color: #FFF;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 56px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-call-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <span>📍 Κατάστημα ACS Καρπενησίου — Αικατερίνη Καϊπάνου Ταχυμεταφορές Ι.Κ.Ε.</span>
+            <div>
+                <a href="tel:2237022313">📞 22370 22313</a>
+                <a href="mailto:krp@acscourier.gr">✉️ krp@acscourier.gr</a>
+                <a href="https://www.acscourier.net" target="_blank" rel="noopener">🌐 acscourier.net</a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-box">
+                <img src="https://www.acscourier.net/lib/cms/img/logo.svg" alt="ACS Courier Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>ΚΑΡΠΕΝΗΣΙ</h1>
+                    <span>EXPRESS COURIER SERVICES</span>
+                </div>
+            </a>
+
+            <nav>
+                <a href="#contact">Επικοινωνία</a>
+                <a href="#about">Υπηρεσίες</a>
+                <a href="#map">Χάρτης</a>
+                <button type="button" onclick="openCompanyModal()">Εταιρεία</button>
+                <button type="button" onclick="openIsologismoiModal()">Ισολογισμοί (ΓΕΜΗ)</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-container">
+            <h2>Αναζήτηση Αποστολής (Track & Trace)</h2>
+            <p>Εντοπίστε την πορεία του δέματός σας εύκολα και γρήγορα στο επίσημο σύστημα της ACS Courier.</p>
+            
+            <div style="margin-top: 1.5rem;">
+                <a href="https://www.acscourier.net/el/myacs/anafores-apostolwn/anazitisi-apostolwn/" 
+                   target="_blank" 
+                   rel="noopener"
+                   class="btn-track-action">
+                    Μετάβαση στο Track & Trace της ACS 🔍
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container">
+
+        <section id="contact" class="section-card">
+            <h2 class="section-title">Στοιχεία Επικοινωνίας & Λειτουργίας</h2>
+            
+            <div class="grid-4">
+                <div class="info-card red-top">
+                    <label>📍 Διεύθυνση</label>
+                    <p>Αθανασίου Διάκου 3, Καρπενήσι, Τ.Κ. 36100</p>
+                </div>
+                <div class="info-card red-top">
+                    <label>📞 Τηλέφωνο</label>
+                    <p><a href="tel:2237022313">22370 22313</a></p>
+                </div>
+                <div class="info-card">
+                    <label>✉️ Email Καταστήματος</label>
+                    <p style="font-size:0.95rem;"><a href="mailto:krp@acscourier.gr">krp@acscourier.gr</a></p>
+                </div>
+                <div class="info-card">
+                    <label>🕒 Ώρες Εξυπηρέτησης</label>
+                    <p style="font-size:0.9rem;">Δευ - Παρ: 08:00 - 20:00<br>Σάββατο: 08:00 - 15:00</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-card">
+            <h2 class="section-title">Υπηρεσίες Ταχυμεταφορών</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                Το κατάστημα <strong>ACS Καρπενησίου</strong> (ΑΪΚΑΤΕΡΙΝΗ ΚΑΪΠΑΝΟΥ ΤΑΧΥΜΕΤΑΦΟΡΕΣ Ι.Κ.Ε.) παρέχει ολοκληρωμένες ταχυδρομικές υπηρεσίες εγγράφων και δεμάτων, καλύπτοντας όλο το Νομό Ευρυτανίας, την Ελλάδα και το Εξωτερικό.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">📦</span>
+                    <h3>ACS Express Data & Parcel</h3>
+                    <p>Αυθημερόν και επείγουσες παραδόσεις εγγράφων και μικροδεμάτων πανελλαδικά.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">✈️</span>
+                    <h3>Αποστολές Εξωτερικού</h3>
+                    <p>Γρήγορη και ασφαλής διακίνηση δεμάτων σε περισσότερες από 200 χώρες.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💳</span>
+                    <h3>Διαχείριση Αντικαταβολών</h3>
+                    <p>Αξιόπιστες λύσεις πληρωμών και παραδόσεων για e-shops και επαγγελματίες.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📍</span>
+                    <h3>ACS Smartpoint</h3>
+                    <p>Εύκολη παραλαβή & αποστολή δεμάτων από το τοπικό σημείο εξυπηρέτησης.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="map" class="section-card">
+            <h2 class="section-title">Τοποθεσία στο Χάρτη</h2>
+            <p>Επισκεφθείτε το κατάστημά μας στην οδό Αθανασίου Διάκου 3 στο Καρπενήσι:</p>
+
+            <div class="map-box">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.977430154812!2d21.7931363!3d38.9130907!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x135edf1acd761f23%3A0x54588ef3e3b3a13e!2sACS%20Courier!5e0!3m2!1sel!2sgr!4v1789491229648!5m2!1sel!2sgr" 
+                    title="Χάρτης ACS Courier Καρπενήσι"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <a href="https://maps.app.goo.gl/Je4P6MYMxXJ5EC1d7" target="_blank" rel="noopener" class="btn-map-link">
+                🗺️ Άνοιγμα στο Google Maps (Πλοήγηση)
+            </a>
+        </section>
+
+    </div>
+
+    <!-- Modal Εταιρείας -->
+    <div id="companyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="companyTitle">
+        <div class="modal-content">
+            <button type="button" class="close-btn" onclick="closeCompanyModal()" aria-label="Κλείσιμο">&times;</button>
+            <h3 id="companyTitle" style="color: var(--text-main); font-size:1.3rem; margin-bottom: 6px;">Εταιρικά Στοιχεία Δημοσιότητας (Γ.Ε.ΜΗ.)</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.2rem;">
+                Δημοσίευση εταιρικών πληροφοριών σύμφωνα με τις διατάξεις των Ν. 4072/2012 και Ν. 4548/2018.
+            </p>
+
+            <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="info-card">
+                    <label>Εταιρική Επωνυμία</label>
+                    <p style="font-size:0.92rem;">ΑΪΚΑΤΕΡΙΝΗ ΚΑΪΠΑΝΟΥ ΤΑΧΥΜΕΤΑΦΟΡΕΣ Ι.Κ.Ε.</p>
+                </div>
+                <div class="info-card">
+                    <label>Διακριτικός Τίτλος</label>
+                    <p>ACS ΚΑΡΠΕΝΗΣΙΟΥ</p>
+                </div>
+                <div class="info-card red-top">
+                    <label>Αριθμός Γ.Ε.ΜΗ.</label>
+                    <p>170062323000</p>
+                </div>
+                <div class="info-card red-top">
+                    <label>Α.Φ.Μ. / Δ.Ο.Υ.</label>
+                    <p style="font-size:0.92rem;">802106180 / Δ.Ο.Υ. ΚΑΡΠΕΝΗΣΙΟΥ</p>
+                </div>
+                <div class="info-card">
+                    <label>Έδρα & Διεύθυνση</label>
+                    <p style="font-size:0.9rem;">Αθανασίου Διάκου 3, Καρπενήσι, Τ.Κ. 36100</p>
+                </div>
+                <div class="info-card">
+                    <label>Email Επικοινωνίας</label>
+                    <p style="font-size:0.9rem;"><a href="mailto:krp@acscourier.gr">krp@acscourier.gr</a></p>
+                </div>
+                <div class="info-card">
+                    <label>Νομική Μορφή</label>
+                    <p>Ι.Κ.Ε. (Ιδιωτική Κεφαλαιουχική Εταιρεία)</p>
+                </div>
+                <div class="info-card">
+                    <label>Εταιρικό Κεφάλαιο</label>
+                    <p style="font-size:0.9rem;">Καταβεβλημένο / 100% Εταιρικά Μερίδια</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ισολογισμών -->
+    <div id="isologismoiModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="isoTitle">
+        <div class="modal-content">
+            <button type="button" class="close-btn" onclick="closeIsologismoiModal()" aria-label="Κλείσιμο">&times;</button>
+            <h3 id="isoTitle" style="color: var(--text-main); font-size:1.3rem; margin-bottom: 6px;">Οικονομικά Στοιχεία & Ισολογισμοί</h3>
+            <p style="color: var(--text-muted); font-size:0.88rem;">Κατεβάστε τα αρχεία των δημοσιευμένων ισολογισμών της εταιρείας σε μορφή PDF:</p>
+            
+            <ul class="file-list">
+                <li>
+                    <span><strong>Ισολογισμός 2025</strong> (PDF)</span>
+                    <a href="isologismos-2025.pdf" target="_blank" rel="noopener">Λήψη PDF</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <!-- Κουμπί Άμεσης Κλήσης για Κινητά -->
+    <a href="tel:2237022313" class="mobile-call-btn" aria-label="Καλέστε στο κατάστημα">📞</a>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>ACS ΚΑΡΠΕΝΗΣΙΟΥ</h4>
+                <p><strong>ΑΪΚΑΤΕΡΙΝΗ ΚΑΪΠΑΝΟΥ ΤΑΧΥΜΕΤΑΦΟΡΕΣ Ι.Κ.Ε.</strong></p>
+                <p>Αθανασίου Διάκου 3, Καρπενήσι, Τ.Κ. 36100</p>
+                <p>Τηλ: <a href="tel:2237022313">22370 22313</a></p>
+                <p>Email: <a href="mailto:krp@acscourier.gr">krp@acscourier.gr</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>ΝΟΜΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</h4>
+                <p>Α.Φ.Μ.: 802106180</p>
+                <p>Δ.Ο.Υ.: Καρπενησίου</p>
+                <p>Αρ. Γ.Ε.ΜΗ.: 170062323000</p>
+            </div>
+            <div class="footer-col">
+                <h4>ΔΙΚΤΥΟ ACS</h4>
+                <p>Εξουσιοδοτημένος Αντιπρόσωπος Δικτύου ACS Courier & Ταχυδρομικών Υπηρεσιών.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="currentYear"></span> ΑΪΚΑΤΕΡΙΝΗ ΚΑΪΠΑΝΟΥ ΤΑΧΥΜΕΤΑΦΟΡΕΣ Ι.Κ.Ε. — Όλα τα δικαιώματα διατηρούνται.
+        </div>
+    </footer>
+
+    <script>
+        // Ενημέρωση έτους στο footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Διαχείριση Modals
+        function openCompanyModal() {
+            document.getElementById('companyModal').style.display = 'flex';
+        }
+
+        function closeCompanyModal() {
+            document.getElementById('companyModal').style.display = 'none';
+        }
+
+        function openIsologismoiModal() {
+            document.getElementById('isologismoiModal').style.display = 'flex';
+        }
+
+        function closeIsologismoiModal() {
+            document.getElementById('isologismoiModal').style.display = 'none';
+        }
+
+        // Κλείσιμο με κλικ έξω από το Modal
+        window.onclick = function(event) {
+            var compModal = document.getElementById('companyModal');
+            var isoModal = document.getElementById('isologismoiModal');
+            if (event.target == compModal) {
+                closeCompanyModal();
+            }
+            if (event.target == isoModal) {
+                closeIsologismoiModal();
+            }
+        };
+
+        // Κλείσιμο με το πλήκτρο Escape
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCompanyModal();
+                closeIsologismoiModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
